@@ -5,12 +5,17 @@ const GetImages = () => {
   const [images, setImages] = useState([]);
   useEffect(() => {
     const fetchImages = async () => {
-      const res = await fetch(
-        `https://api.unsplash.com/photos?client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`
-      );
-      const data = await res.json();
-      console.log(data);
-      setImages(data);
+      try {
+        const res = await fetch(
+          `https://api.unsplash.com/photos?client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`
+        );
+        const data = await res.json();
+        console.log(data);
+        setImages(data);
+      } catch (e) {
+        console.log(e);
+        alert("something went wrong");
+      }
     };
     fetchImages();
   }, []);

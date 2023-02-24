@@ -1,11 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import GetImages from "./GetImages";
-import GetSpecificimage from "./GetSpecificimage";
+import GetImages from "./components/GetImages";
+import GetSpecificimage from "./components/GetSpecificimage";
 
 export default function App() {
   return (
     <>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-pink-500 mb-3">
+      <nav
+        data-testid="check"
+        className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-pink-500 mb-3"
+      >
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a

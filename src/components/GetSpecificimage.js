@@ -6,12 +6,20 @@ const GetSpecificimage = () => {
   const [query, setQuery] = useState("dogs");
   useEffect(() => {
     const fetchImages = async () => {
-      const res = await fetch(
-        `https://api.unsplash.com/search/photos?page=3&query=${query}&client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`
-      );
-      const data = await res.json();
-      console.log(data);
-      setImages(data.results);
+      let res;
+      try {
+        if (query) {
+          res = await fetch(
+            `https://api.unsplash.com/search/photos?page=3&query=${query}&client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`
+          );
+        }
+        const data = await res.json();
+        console.log(data);
+        setImages(data.results);
+      } catch (e) {
+        console.log(e);
+        alert("something went wrong..");
+      }
     };
     fetchImages();
   }, [query]);
